@@ -1,0 +1,32 @@
+nav {
+    background: navy;
+    width: 15%;
+    height: 100%;
+    position:fixed;
+    left: 0px;
+    top: 0px;
+
+    color: #fff;
+}
+
+nav a {
+    color: #fff;
+}
+
+body {
+    padding-left: calc(15% + 20px);
+    padding-top: 20px;
+    font-family: 'Noto Sans', sans-serif;
+}
+
+h1, h2 {
+    font-family: 'Bree Serif', serif;
+}
+
+pre {
+    font-family: 'Inconsolata', monospace;
+}
+
+.abc_source {
+    display: none;
+}

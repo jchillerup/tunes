@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block head %}
+<script src="http://moinejf.free.fr/js/abc2svg-1.js" type="text/javascript"></script>
+<script src="http://moinejf.free.fr/js/abcemb-1.js" type="text/javascript"></script>
+<script src="{% static "js/svghelper.js" %}" type="text/javascript"></script>
+{% endblock %}
+
+{% block content %}
+<h1>{{ tune.title }}</h1>
+
+{% for setting in settings %}
+<pre id="tune" class="abc_source">{{setting}}</pre>
+<div id="tune_svg"></div>
+<script>
+  do_svg(
+      document.getElementById('tune').innerHTML,
+      document.getElementById('tune_svg')
+  );
+</script>
+
+
+{% endfor %}
+
+{% endblock %}

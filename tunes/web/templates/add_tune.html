@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Add a tune</h1>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec enim nibh, vulputate sit amet tristique ut, efficitur tempor nulla. Vestibulum et ultricies velit, eget ullamcorper sapien. Quisque eget nunc lorem. Nulla quis varius velit, vitae ullamcorper velit. Donec venenatis posuere urna non hendrerit. Donec a neque orci. Aliquam accumsan facilisis ante at dignissim. Suspendisse vestibulum ac mi ac consectetur. Integer vitae sapien elit. Nunc commodo nunc leo, vitae consequat nunc ornare sit amet. Sed venenatis sodales nunc in venenatis. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+
+<table>
+  <tr>
+    <td>Title</td>
+    <td><input type="text" name="title"></td>
+  </tr>
+  <tr>
+    <td>Type</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>Composer</td>
+    <td><input type="text" name="composer"></td>
+  </tr>
+  <tr>
+    <td>Origin</td>
+    <td><input type="text" name="origin"></td>
+  </tr>
+  <tr>
+    <td>Meter</td>
+    <td><input type="text" name="meter"></td>
+  </tr>
+  <tr>
+    <td>Unit note length</td>
+    <td>
+      <select name="meter">
+        <option value="1/1">1/1</option>
+        <option value="1/2">1/2</option>
+        <option value="1/4">1/4</option>
+        <option value="1/8" selected="selected">1/8</option>
+        <option value="1/16">1/16</option>
+        <option value="none">Free meter</option>        
+      </select>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      Key
+    </td>
+    <td>
+      <input type="text" name="key" value="Am">
+    </td>
+  </tr>
+
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+      <input type="submit" value="Add tune" />
+    </td>
+  </tr>
+
+  <tr>
+</table>
+
+
+
+{% endblock %}

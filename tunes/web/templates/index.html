@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% load humanize %}
+
+{% block content %}
+    <h1>tunes</h1>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam fermentum sapien ut ante venenatis, venenatis varius arcu molestie. Nunc dictum blandit enim vitae scelerisque. Aliquam non libero neque. Ut nulla justo, interdum pharetra ante vel, sodales pulvinar dui. Nulla facilisi. Integer lacinia nisi quam, at pulvinar dolor sodales quis. Donec malesuada, mi ac egestas tincidunt, enim elit tristique elit, et condimentum mi justo a turpis. Mauris ornare ex scelerisque enim condimentum sagittis. Curabitur condimentum ipsum in diam tincidunt, et congue lorem eleifend. Morbi nec varius tellus. Curabitur rutrum elit lacus, nec fermentum lacus porttitor eu. Integer sagittis mi vel augue rhoncus, eget ultricies eros aliquet. Nam consectetur semper velit sed posuere. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Integer viverra ex augue, in pharetra enim vulputate in.</p>
+
+    <h2>Newest tunes</h2>
+    <ul>
+      {% for setting in latest_tunes %}
+      <li><a href="/tune/{{setting.tune.id}}">{{setting.tune.title}}</a> <span class="timesince">{{ setting.last_modified|naturaltime }}</span></li>
+      {% endfor %}
+    </ul>
+{% endblock %}
