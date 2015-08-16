@@ -56,3 +56,7 @@ docs/_build/
 
 # PyBuilder
 target/
+
+
+tunes/tunes/settings_secret.py
+tunes/db.sqlite3
