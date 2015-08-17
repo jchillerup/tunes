@@ -1,7 +1,7 @@
 from django.views.generic.base import TemplateView
 from django.shortcuts import render
 from django.http import HttpResponse
-
+from django.utils.translation import ugettext_lazy as _
 from .models import *
 
 import datetime
