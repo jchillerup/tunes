@@ -38,7 +38,7 @@ def about(request):
     return render(request, 'about.html')
 
 def add_tune(request):
-    context = {}
+    context = {"allowed_keys": SETTING_KEY_CHOICES}
     return render(request, 'add_tune.html', context)
 
 def add_setting(request):

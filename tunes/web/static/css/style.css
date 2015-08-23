@@ -30,3 +30,22 @@ pre {
 .abc_source {
     display: none;
 }
+
+table.tunedetails {
+    width: 100%;
+}
+
+table.tunedetails td {
+    padding: 6px 12px;
+    vertical-align: top;
+}
+
+table.tunedetails td input {
+    font-size: 1.2em;
+    width: 40%;
+}
+
+.hint {
+    color: #aaa;
+    font-size: .8em;
+}

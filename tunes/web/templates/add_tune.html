@@ -4,29 +4,31 @@
 <h1>Add a tune</h1>
 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec enim nibh, vulputate sit amet tristique ut, efficitur tempor nulla. Vestibulum et ultricies velit, eget ullamcorper sapien. Quisque eget nunc lorem. Nulla quis varius velit, vitae ullamcorper velit. Donec venenatis posuere urna non hendrerit. Donec a neque orci. Aliquam accumsan facilisis ante at dignissim. Suspendisse vestibulum ac mi ac consectetur. Integer vitae sapien elit. Nunc commodo nunc leo, vitae consequat nunc ornare sit amet. Sed venenatis sodales nunc in venenatis. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
 
-<table>
+<p>If you would rather add a variant of a tune, go to that tune's page.</p>
+
+<table class="tunedetails">
   <tr>
-    <td>Title</td>
+    <td width="20%">Title <span class="hint">[T]</span></td>
     <td><input type="text" name="title"></td>
   </tr>
   <tr>
     <td>Type</td>
-    <td>&nbsp;</td>
+    <td><input type="text" name="type"></td>
   </tr>
   <tr>
-    <td>Composer</td>
+    <td>Composer <span class="hint">[C]</span></td>
     <td><input type="text" name="composer"></td>
   </tr>
   <tr>
-    <td>Origin</td>
+    <td>Origin  <span class="hint">[O]</span></td>
     <td><input type="text" name="origin"></td>
   </tr>
   <tr>
-    <td>Meter</td>
+    <td>Meter  <span class="hint">[M]</span></td>
     <td><input type="text" name="meter"></td>
   </tr>
   <tr>
-    <td>Unit note length</td>
+    <td>Unit note length  <span class="hint">[L]</span></td>
     <td>
       <select name="meter">
         <option value="1/1">1/1</option>
@@ -40,13 +42,26 @@
   </tr>
   <tr>
     <td>
-      Key
+      Key  <span class="hint">[K]</span>
     </td>
     <td>
-      <input type="text" name="key" value="Am">
+      <select name="key">
+        {% for key, val in allowed_keys %}
+        <option value="{{ key }}">{{ val }}</option>
+        {% endfor %}
+      </select>
     </td>
   </tr>
 
+  <tr>
+    <td>
+      Staves
+    </td>
+    <td>
+      <textarea name="staves"></textarea>
+    </td>
+  </tr>
+  
   <tr>
     <td>
       &nbsp;
