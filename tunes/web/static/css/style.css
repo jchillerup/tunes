@@ -40,9 +40,15 @@ table.tunedetails td {
     vertical-align: top;
 }
 
-table.tunedetails td input {
+table.tunedetails td input, table.tunedetails td textarea {
     font-size: 1.2em;
-    width: 40%;
+    width: 100%;
+}
+
+table.tunedetails td textarea {
+    width: 100%;
+    height: 350px;
+    font-family: 'Inconsolata', monospace;
 }
 
 .hint {

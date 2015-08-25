@@ -1,1 +1,14 @@
 {% extends "base.html" %}
+
+{% block content %}
+<h1>Tunes</h1>
+
+<p>
+  <ul>
+    {% for tune in tunes %}
+    <li><a href="/tune/{{tune.id}}">{{tune.name}}</a></li>
+    {% endfor %}
+  </ul>
+</p>
+
+{% endblock %}

@@ -22,6 +22,7 @@ from web import views
 urlpatterns = [
     url(r'^$', views.home, name='home'),
     url(r'^tune/(?P<tune_id>[0-9]+)', views.tune, name='tune'),
+    url(r'^tune/(?P<tune_id>[0-9]+).abc', views.tune_abc, name='tune_abc'),
     url(r'^tune/new', views.add_tune, name='add_tune'),
     url(r'^tunes', views.tunes, name='tunes'),
     url(r'^admin/', include(admin.site.urls)),

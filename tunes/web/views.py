@@ -31,8 +31,16 @@ def tune(request, tune_id):
     
     return render(request, 'view_tune.html', context)
 
+# Return the tune as an ABC file
+def tune_abc(request, tune_id):
+    pass
+
 def tunes(request):
-    return render(request, 'tunes.html')
+    context = {
+        "tunes": Tune.objects.get()
+        }
+    
+    return render(request, 'tunes.html', context)
 
 def about(request):
     return render(request, 'about.html')

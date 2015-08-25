@@ -19,6 +19,7 @@ SETTING_KEY_CHOICES = [('A', 'A major'), ('A#Loc', 'A# locrian'), ('A#Phr', 'A# 
 
 class TunesUser(models.Model):
     user = models.OneToOneField(User)
+    description = models.TextField(null=True)
     lat = models.FloatField(null=True)
     lon = models.FloatField(null=True)
 
