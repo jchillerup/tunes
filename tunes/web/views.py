@@ -1,3 +1,5 @@
+import datetime
+
 from django.views.generic.base import TemplateView
 from django.shortcuts import render
 from django.http import HttpResponse
@@ -5,9 +7,9 @@ from django.utils.translation import ugettext_lazy as _
 from django.core.exceptions import ObjectDoesNotExist
 from django.contrib.auth import authenticate
 from django.contrib.auth import login as auth_login, logout as auth_logout
+from django.contrib.auth.decorators import login_required
 from .models import *
 
-import datetime
 
 def home(request):
     now = datetime.datetime.now()
@@ -83,6 +85,7 @@ def tunes(request):
 def about(request):
     return render(request, 'about.html')
 
+@login_required
 def add_tune(request):
     context = {"allowed_keys": SETTING_KEY_CHOICES}
     return render(request, 'add_tune.html', context)

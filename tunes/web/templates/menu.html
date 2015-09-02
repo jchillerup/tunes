@@ -1,7 +1,7 @@
 <nav>
   <div id="login">
     {% if user.is_authenticated %}
-    <p>Logged in</p>
+    <p>Logged in as {{ user.username }}</p>
     <a href="/logout">Log out</a>
     {% else %}
     <form action="/login" method="post">
@@ -16,7 +16,9 @@
   <ul>
     <li><a href="/">Main page</a></li>
     <li><a href="/tunes/">Tunes</a></li>
+    {% if user.is_authenticated %}
     <li><a href="/tune/new">New tune</a></li>
+    {% endif %}
     <li><a href="/about">About</a></li>
   </ul>  
 </nav>
