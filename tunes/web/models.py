@@ -45,6 +45,10 @@ class Tune(models.Model):
                              null=True)
     type = models.ForeignKey(TuneType)
 
+    def get_absolute_url(self):
+        from django.core.urlresolvers import reverse
+        return reverse('web.views.tune', args=[str(self.id)])
+
 class TuneAlias(models.Model):
     alias = models.CharField(max_length=255)
     tune = models.ForeignKey(Tune)

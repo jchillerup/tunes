@@ -21,6 +21,7 @@ from web import views
 
 urlpatterns = [
     url(r'^$', views.home, name='home'),
+    url(r'^tune/submit', views.submit_tune, name='submit_tune'),
     url(r'^tune/(?P<tune_id>[0-9]+)', views.tune, name='tune'),
     url(r'^tune/(?P<tune_id>[0-9]+).abc', views.tune_abc, name='tune_abc'),
     url(r'^tune/new', views.add_tune, name='add_tune'),
@@ -28,5 +29,7 @@ urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^about/', views.about, name='about'),
     url(r'^404', views.fourohfour, name='404'),
+    url(r'^login', views.login, name='login'),
+    url(r'^logout', views.logout, name='logout'),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 

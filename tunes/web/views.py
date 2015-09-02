@@ -2,6 +2,9 @@ from django.views.generic.base import TemplateView
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.utils.translation import ugettext_lazy as _
+from django.core.exceptions import ObjectDoesNotExist
+from django.contrib.auth import authenticate
+from django.contrib.auth import login as auth_login, logout as auth_logout
 from .models import *
 
 import datetime
@@ -12,11 +15,34 @@ def home(request):
     latest_tunes = Setting.objects.order_by('-id')[:10]
     
     context = {
+        'user': request.user,
         'timestamp': now,
         'latest_tunes': latest_tunes,
         }
     
     return render(request, 'index.html', context)
+
+def login(request):
+    username = request.POST['username']
+    password = request.POST['password']
+    user = authenticate(username=username, password=password)
+
+    if user is not None:
+        if user.is_active:
+            auth_login(request, user)
+        else:
+            # deal with inactive users
+            pass
+
+    else:
+        # invalid login
+        pass
+    
+    return home(request)
+
+def logout(request):
+    auth_logout(request)
+    return home(request)
 
 def tune(request, tune_id):
     tune_id = int(tune_id)
@@ -35,10 +61,22 @@ def tune(request, tune_id):
 def tune_abc(request, tune_id):
     pass
 
+def submit_tune(request):
+    tune = Tune()
+    tune.created_by = request.user
+    tune.save()
+
+    return redirect(tune)
+
 def tunes(request):
-    context = {
-        "tunes": Tune.objects.get()
-        }
+    try:
+        context = {
+            "tunes": Tune.objects.get()
+            }
+    except ObjectDoesNotExist:
+        context  = {
+            "tunes": []
+            }
     
     return render(request, 'tunes.html', context)
 

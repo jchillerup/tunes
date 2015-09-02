@@ -14,74 +14,76 @@
 
 <p>If you would rather add a variant of a tune, go to that tune's page.</p>
 
-<table class="tunedetails" border="1">
-  <tr>
-    <td width="20%">Title <span class="hint">[T]</span></td>
-    <td width="20%"><input type="text" name="title" id="titleField"></td>
-    <td rowspan="7"><div  id="previewContainer"></div></td>
-  </tr>
-  <tr>
-    <td>Type</td>
-    <td><input type="text" name="type"></td>
-  </tr>
-  <tr>
-    <td>Composer <span class="hint">[C]</span></td>
-    <td><input type="text" name="composer" id="composerField"></td>
-  </tr>
-  <tr>
-    <td>Origin  <span class="hint">[O]</span></td>
-    <td><input type="text" name="origin" id="originField"></td>
-  </tr>
-  <tr>
-    <td>Meter  <span class="hint">[M]</span></td>
-    <td><input type="text" name="meter" id="meterField"></td>
-  </tr>
-  <tr>
-    <td>Unit note length  <span class="hint">[L]</span></td>
-    <td>
-      <select name="meter" id="unitNoteLengthField">
-        <option value="1/1">1/1</option>
-        <option value="1/2">1/2</option>
-        <option value="1/4">1/4</option>
-        <option value="1/8" selected="selected">1/8</option>
-        <option value="1/16">1/16</option>
-        <option value="none">Free meter</option>        
-      </select>
-    </td>
-  </tr>
-  <tr>
-    <td>
-      Key  <span class="hint">[K]</span>
-    </td>
-    <td>
-      <select name="key" id="keyField">
-        {% for key, val in allowed_keys %}
-        <option value="{{ key }}">{{ val }}</option>
-        {% endfor %}
-      </select>
-    </td>
-  </tr>
+<form action="/tune/submit" method="post">
+  {% csrf_token %}
+  <table class="tunedetails" border="1">
+    <tr>
+      <td width="20%">Title <span class="hint">[T]</span></td>
+      <td width="20%"><input type="text" name="title" id="titleField"></td>
+      <td rowspan="7"><div  id="previewContainer"></div></td>
+    </tr>
+    <tr>
+      <td>Type</td>
+      <td><input type="text" name="type"></td>
+    </tr>
+    <tr>
+      <td>Composer <span class="hint">[C]</span></td>
+      <td><input type="text" name="composer" id="composerField"></td>
+    </tr>
+    <tr>
+      <td>Origin  <span class="hint">[O]</span></td>
+      <td><input type="text" name="origin" id="originField"></td>
+    </tr>
+    <tr>
+      <td>Meter  <span class="hint">[M]</span></td>
+      <td><input type="text" name="meter" id="meterField"></td>
+    </tr>
+    <tr>
+      <td>Unit note length  <span class="hint">[L]</span></td>
+      <td>
+        <select name="meter" id="unitNoteLengthField">
+          <option value="1/1">1/1</option>
+          <option value="1/2">1/2</option>
+          <option value="1/4">1/4</option>
+          <option value="1/8" selected="selected">1/8</option>
+          <option value="1/16">1/16</option>
+          <option value="none">Free meter</option>        
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        Key  <span class="hint">[K]</span>
+      </td>
+      <td>
+        <select name="key" id="keyField">
+          {% for key, val in allowed_keys %}
+          <option value="{{ key }}">{{ val }}</option>
+          {% endfor %}
+        </select>
+      </td>
+    </tr>
 
-  <tr>
-    <td>
-      Staves
-    </td>
-    <td colspan="2">
-      <textarea name="staves" id="staves"></textarea>
-    </td>
-  </tr>
-  
-  <tr>
-    <td>
-      &nbsp;
-    </td>
-    <td>
-      <input type="submit" value="Add tune" />
-    </td>
-  </tr>
+    <tr>
+      <td>
+        Staves
+      </td>
+      <td colspan="2">
+        <textarea name="staves" id="staves"></textarea>
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        &nbsp;
+      </td>
+      <td>
+        <input type="submit" value="Add tune" />
+      </td>
+    </tr>
 
-  <tr>
-</table>
-
+    <tr>
+  </table>
+</form>
 
 {% endblock %}
