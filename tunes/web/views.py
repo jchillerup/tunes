@@ -1,7 +1,7 @@
 import datetime
 
 from django.views.generic.base import TemplateView
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.utils.translation import ugettext_lazy as _
 from django.core.exceptions import ObjectDoesNotExist
@@ -61,12 +61,36 @@ def tune(request, tune_id):
 
 # Return the tune as an ABC file
 def tune_abc(request, tune_id):
-    pass
+    # Return alll settings
+    tune = Tune.objects.get(id=tune_id)
+    return HttpResponse(tune.__str__())
 
 def submit_tune(request):
+    tunes_user, existed_user = TunesUser.objects.get_or_create(user = request.user)
+    tune_type, existed_type = TuneType.objects.get_or_create(name = request.POST.get('type'))
+
+    if not existed_type:
+        tune_type.standard_unit_note = request.POST.get('unit_note')
+        # tune_type.standard_tempo = request.POST.get('tempo')
+    
     tune = Tune()
-    tune.created_by = request.user
+    tune.title = request.POST.get('title')
+    tune.composer = request.POST.get('composer')
+    tune.origin = request.POST.get('origin')
+    tune.created_by = tunes_user
+    tune.type = tune_type
     tune.save()
+
+    setting = Setting()
+    setting.tune = tune
+    setting.meter = request.POST.get('meter')
+    setting.unit_note = request.POST.get('unit_note')
+    setting.key = request.POST.get('key')
+    setting.staves = request.POST.get('staves')
+    setting.created_at = datetime.datetime.now()
+    setting.last_modified = datetime.datetime.now()
+    setting.created_by = tunes_user
+    setting.save()
 
     return redirect(tune)
 

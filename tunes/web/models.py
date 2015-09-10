@@ -105,7 +105,7 @@ class Setting(models.Model):
         
         abc += "K: %s\n" % self.key
 
-        abc += staves + "\n"
+        abc += self.staves + "\n"
         
         return abc    
 
